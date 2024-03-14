@@ -1,18 +1,20 @@
 #!/usr/bin/python3
 if __name__ == "__main__":
     import sys
-    i = len(sys.argv) - 1
 
-    if i == 0:
-        print("{} arguments.".format(i))
-    elif i == 1:
-        print("{} argument:".format(i))
-    else:
-        print("{} arguments:".format(i))
+    argv = sys.argv
+    argv_len = len(argv)
 
-    if i >= 1:
-        i = 0
-        for arg in sys.argv:
-            if i != 0:
-                print("{}: {}".format(i, arg))
-            i += 1
+    if argv_len == 1:
+        print("0 arguments.")
+
+    elif argv_len == 2:
+        print("1 argument:")
+        print("1: {:s}".format(argv[1]))
+
+    elif argv_len > 2:
+        # to execlude the program name
+        print("{0:d} arguments:".format(argv_len - 1))
+
+        for i in range(1, argv_len):
+            print("{0:d}: {1:s}".format(i, argv[i]))
